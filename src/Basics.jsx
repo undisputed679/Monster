@@ -4,14 +4,30 @@ export default class Basics extends Component {
     constructor(){
         super();
         this.state={
-            String:'hello i am here'
+            monsters:[
+                {
+                    name:'kilwish',
+                    id:1
+                },
+                {
+                    name:'dracula',
+                    id :2
+                },
+                {
+                    name:'zombie',
+                    id:3
+                }
+            ],
+          
         };
     }
     render() {
         return (
             <div>
-                <p>{this.state.String}</p>
-                <button onClick={()=>this.setState({String:'this is changed'})}>Change text</button>
+               {
+                   this.state.monsters.map(monster=><h1 key={monster.id}>{monster.name}</h1>)
+               }
+              
             </div>
         )
     }

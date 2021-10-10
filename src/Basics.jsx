@@ -15,15 +15,11 @@ export default class Basics extends Component {
     }
     render() {
         return (
-            <div>
-                <CardList name="i am name">
-                    {
-                        this.state.monsters.map(monster => <h1 key={monster.id}>{monster.name}</h1>)
-                    }
-                </CardList>
+            //yaha monsters naam me daal diye pura array monsters wala
+            //monsters ke jagah kuch bhi naam ho saktahai
 
-
-
+            <div style={{margin:0,padding:0}}>
+                <CardList monsters={this.state.monsters}> </CardList>
             </div>
         )
     }

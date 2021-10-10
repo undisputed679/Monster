@@ -6,6 +6,7 @@ export default class Basics extends Component {
         super();
         this.state = {
             monsters: [],
+            searchfield:''
         };
     }
     componentDidMount() {
@@ -14,12 +15,14 @@ export default class Basics extends Component {
             .then(user => this.setState({ monsters: user }))
     }
     render() {
+        const {monsters,searchfield}=this.state;
+        const filterdMonsters=monsters.filter(monster =>
+            monster.name.toLowerCase().includes(searchfield.toLowerCase()));
         return (
-            //yaha monsters naam me daal diye pura array monsters wala
-            //monsters ke jagah kuch bhi naam ho saktahai
-
             <div style={{margin:0,padding:0}}>
-                <CardList monsters={this.state.monsters}> </CardList>
+                <input type="search"  placeholder="Search Monster"
+                 onChange={e=>this.setState({searchfield:e.target.value})}/>
+                <CardList monsters={filterdMonsters}> </CardList>
             </div>
         )
     }

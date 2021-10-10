@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { CardList } from './components/cardlist/CardList';
+import { SearchBox } from './components/searchbox/Searchbox';
+import './basic.css'
+
 
 export default class Basics extends Component {
     constructor() {
@@ -19,9 +22,17 @@ export default class Basics extends Component {
         const filterdMonsters=monsters.filter(monster =>
             monster.name.toLowerCase().includes(searchfield.toLowerCase()));
         return (
-            <div style={{margin:0,padding:0}}>
-                <input type="search"  placeholder="Search Monster"
-                 onChange={e=>this.setState({searchfield:e.target.value})}/>
+            <div className="back"  >
+                <h1 style={{fontFamily: 'Bigelow Rules',fontSize:'72px',textAlign:'center',
+            color:'#0ccac4'}}>Monsters Rolodex</h1>
+                <div style={{marginLeft:"45%"}}>
+                
+                <SearchBox
+                     placeholder="Search Monster"
+                     handleChange={e=>this.setState({searchfield:e.target.value})}
+                 />
+                </div>
+                 
                 <CardList monsters={filterdMonsters}> </CardList>
             </div>
         )
